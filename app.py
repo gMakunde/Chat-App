@@ -1,5 +1,5 @@
 import os
-import flask
+import flask, flask_sqlalchemy
 
 app = flask.Flask(__name__)
 
