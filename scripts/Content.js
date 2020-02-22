@@ -1,13 +1,10 @@
     
 import * as React from 'react';
 
-export class Content extends React.Component {
-    render() {
-        return 
-        <div className="container-fluid h-100">
+const htmlBody = <div className="container-fluid h-100">
 			<div className="row justify-content-center h-100">
 				<div className="col-md-4 col-xl-3 chat"><div className="card mb-sm-3 mb-md-0 contacts_card">
-					<div className="card-header">
+					<div className="caheader">
 						<div className="input-group">
 							<input type="text" placeholder="Search..." name="" className="form-control search" />
 							<div className="input-group-prepend">
@@ -188,5 +185,10 @@ export class Content extends React.Component {
 				</div>
 			</div>
 		</div>;
+
+export class Content extends React.Component {
+    render() {
+        return htmlBody;
+        
     }
 }
