@@ -3,6 +3,9 @@ import flask, flask_sqlalchemy
 
 app = flask.Flask(__name__)
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://<gMakunde>:<San20Faith>@localhost/postgres'  
+db = flask_sqlalchemy.SQLAlchemy(app)
+
 @app.route('/')
 def hello():
     return flask.render_template('index.html')
