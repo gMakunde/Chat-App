@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from './Button'
+import { MessageSent } from './MessageSent'
 
 function ProfilePicture(props){
 	if(props.bot) {

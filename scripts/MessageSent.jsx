@@ -13,7 +13,7 @@ function Message(user, msg) {
 }
 
 
-export class Button extends React.Component {
+export class MessageSent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
