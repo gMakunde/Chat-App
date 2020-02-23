@@ -1,7 +1,7 @@
     
 import * as React from 'react';
 
-const messageSend = <div className="d-flex justify-content-start mb-4">
+const userResponse = <div className="d-flex justify-content-start mb-4">
 								<div className="img_cont_msg">
 									<img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" className="rounded-circle user_img_msg"/>
 								</div>
