@@ -53,6 +53,11 @@ export class Button extends React.Component {
         console.log('User Message:', this.state.user_message);
     }
     
+    handleChangeMessage(event) {
+        this.setState({user_message: event.target.value});
+        console.log('user_message', event.target.value);
+    }
+    
     render() {
         return (
         <div>
@@ -67,7 +72,7 @@ export class Button extends React.Component {
     			<div className="input-group-append">
     				<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
     			</div>
-    			<textarea name="" value = {this.state.user_message} className="form-control type_msg" placeholder="Type your message..."></textarea>
+    			<textarea name="" value = {this.state.user_message} className="form-control type_msg" placeholder="Type your message..." onChange = {this.handleChangeMessage}></textarea>
     			<div className="input-group-append" id="send">
     				<span className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></span>
     			</div>
