@@ -58,14 +58,18 @@ export class Button extends React.Component {
         console.log('user_message', event.target.value);
     }
     
+    handleChangeUser(event) {
+        this.setState({user: event.target.value});
+        console.log('user', event.target.value);
+    }
     render() {
         return (
-        <div>
+        <form onSubmit = {this.handleSubmit}>
             <div className="input-group" style={{paddingBottom:'5px'}}>
                 <div className="input-group-append">
                 	<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
                 </div>
-                <textarea name="" value = {this.state.user} className="form-control type_msg_sm" placeholder="Enter your username"></textarea>
+                <textarea name="" value = {this.state.user} className="form-control type_msg_sm" onChange = {this.handleChangeUser} placeholder="Enter your username"></textarea>
             </div>
             
             <div className="input-group">
@@ -73,11 +77,11 @@ export class Button extends React.Component {
     				<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
     			</div>
     			<textarea name="" value = {this.state.user_message} className="form-control type_msg" placeholder="Type your message..." onChange = {this.handleChangeMessage}></textarea>
-    			<div className="input-group-append" id="send">
-    				<span className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></span>
+    			<div className="input-group-append">
+    				<button type="submit" className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></button>
     			</div>
     		</div>
-    	</div>
+    	</form>
             );
     }
 }
