@@ -29,14 +29,14 @@ function MessageBody(props) {
 		return(
 		<div className="msg_cotainer_send">
 			{props.msg}
-			<span className="msg_time">{props.username}</span>
+			<span className="msg_time">{props.user}</span>
 		</div>
 		);
 	}
 	return(
 		<div className="msg_cotainer">
 			{props.msg}
-			<span className="msg_time">{props.username}</span>
+			<span className="msg_time">{props.user}</span>
 		</div>
 		);
 }
@@ -45,16 +45,16 @@ function Response(props) {
 	if(props.bot){
 		return(
 		<div className="d-flex justify-content-start mb-4">
-			<ProfilePicture botpp={true}/>
+			<ProfilePicture bot={props.bot}/>
 			<div style={{paddingRight:'10px'}}></div>
-			<MessageBody msg={props.msg} user={props.username} bot={props.bot}/>
+			<MessageBody msg={props.msg} user={props.user} bot={props.bot}/>
 		</div>
 		);
 	}
 	return (
 		<div className="d-flex justify-content-start mb-4">
 			<ProfilePicture pp={props.pp} botpp={false} />
-			<MessageBody msg={props.msg} user={props.username} bot={props.bot} />
+			<MessageBody msg={props.msg} user={props.user} bot={props.bot} />
 		</div>
 	);
 }
@@ -71,25 +71,30 @@ export class MessagePanel extends React.Component {
     
     componentDidMount(){
     	Socket.on('message received', (data) =>{
+    		this.state.messages.push(data['message']);
     		this.setState({
-    			'message received': data['user_message']
+    			'messages': this.state.messages
     		});
     	})
     }
     
     render() {
+    	let msgs = this.state.messages;
+    	console.log("message list",msgs);
         return (
             <div className="container-fluid h-100">
 				<div className="col-md-8 col-xl-6 chat">
 					<div className="card">
 						<div className="card-header msg_head">
-							<Response />
 							<div className="d-flex bd-highlight">
 								<div className="user_info">
 								</div>
 							</div>
 						</div>
 						<div className="card-body msg_card_body">
+						{ msgs.map( msg =>
+							<Response msg={msg.msg} user={msg.user.username} pp={msg.user.profilePic} bot={msg.user.bot} />
+						)}
 						</div>
 						<div className="card-footer">
 							<MessageSent />

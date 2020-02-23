@@ -24,16 +24,18 @@ def on_new_message(data):
     print("Got an event for new message with data:", data)
     message = data['user_message']
     socketio.emit('message received', {
-        'number': message
+        'message': message
     })
+    print("emitted:", message)
 
 @socketio.on('user')
 def on_user(data):
     print("Got an event for user with data:", data)
-    username = data['user']
+    user = data['user']
     socketio.emit('user received', {
-        'number': username
+        'user': user
     })
+    print('emitted:', user)
 
 socketio.run(
     app,

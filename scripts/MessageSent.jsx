@@ -67,7 +67,8 @@ export class MessageSent extends React.Component {
     
     canBeClicked() {
     const {user_message} = this.state;
-    return user_message.length > 0;
+    const {user} = this.state;
+    return ((user_message.length > 0) && (user.length > 0));
     }
     
     render() {
