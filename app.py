@@ -23,7 +23,7 @@ def on_connect():
 def on_new_message(data):
     print("Got an event for new message with data:", data)
     message = data['user_message']
-    socketio.emit('number received', {
+    socketio.emit('message received', {
         'number': message
     })
 
@@ -31,7 +31,7 @@ def on_new_message(data):
 def on_user(data):
     print("Got an event for user with data:", data)
     username = data['user']
-    socketio.emit('number received', {
+    socketio.emit('user received', {
         'number': username
     })
 

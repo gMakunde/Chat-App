@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { MessageSent } from './MessageSent'
+import { Socket } from './Socket'
 
 function ProfilePicture(props){
 	if(props.bot) {
@@ -60,7 +61,20 @@ function Response(props) {
 
 export class MessagePanel extends React.Component {
     constructor(props) {
-        super();
+        super(props);
+        this.state = {
+        	'messages': [],
+        	'users': []
+        };
+        this.componentDidMount = this.componentDidMount.bind(this);
+    }
+    
+    componentDidMount(){
+    	Socket.on('message received', (data) =>{
+    		this.setState({
+    			'message received': data['user_message']
+    		});
+    	})
     }
     
     render() {

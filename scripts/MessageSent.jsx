@@ -7,9 +7,10 @@ function User(username, profilePic, bot) {
   this.bot = bot;
 }
 
-function Message(user, msg) {
+function Message(user, msg, attachment) {
 	this.user = user;
 	this.msg = msg;
+	this.attachment = attachment;
 }
 
 
@@ -21,7 +22,8 @@ export class MessageSent extends React.Component {
 			user: ''
         };
         
-        this.handeChangeMessage = this.handleChangeMessage.bind(this);
+        this.handleChangeMessage = this.handleChangeMessage.bind(this);
+        this.handleChangeUser = this.handleChangeUser.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.canBeClicked = this.canBeClicked.bind(this);
     }
@@ -71,7 +73,7 @@ export class MessageSent extends React.Component {
     render() {
         let isEnabled = this.canBeClicked();
         return (
-        <form onSubmit = {this.handleSubmit}>
+        <div>
             <div className="input-group" style={{paddingBottom:'5px'}}>
                 <div className="input-group-append">
                 	<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
@@ -85,10 +87,10 @@ export class MessageSent extends React.Component {
     			</div>
     			<textarea name="" value = {this.state.user_message} className="form-control type_msg" placeholder="Type your message..." onChange = {this.handleChangeMessage}></textarea>
     			<div className="input-group-append">
-    				<button disabled= {!isEnabled } type="submit" className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></button>
+    				<button disabled= {!isEnabled } onClick={this.handleSubmit} className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></button>
     			</div>
     		</div>
-    	</form>
+    	</div>
             );
     }
 }
