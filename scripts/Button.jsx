@@ -29,16 +29,28 @@ export class Button extends React.Component {
     handleSubmit(event){
     	event.preventDefault();
     	
-    	this.state.user = new User;
-    	this.state.user.username = this.user_name;
-    	this.state.user_message = new Message;
-    	this.state.user_message.user = this.state.user;
-    	this.state.user_message.msg = this.user_message;
+    	let user = new User;
+    	user.username = this.state.user;
+    	this.state.user = user;
+    	
+    	let message = new Message;
+    	message.user = this.state.user;
+    	message.msg = this.state.user_message;
+    	this.state.user_message = message;
     	
     	Socket.emit('new message', {
     		'user_message': this.state.user_message,
     		'user': this.state.user
     	});
+    	
+    	this.setState({
+    	    user_message: '',
+    	    user: ''
+    	});
+        
+        console.log('Sent a message to server!',this);
+        console.log('User Name:', this.state.user);
+        console.log('User Message:', this.state.user_message);
     }
     
     render() {
@@ -48,14 +60,14 @@ export class Button extends React.Component {
                 <div className="input-group-append">
                 	<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
                 </div>
-                <textarea name="" value = {this.user_name} className="form-control type_msg_sm" placeholder="Enter your username"></textarea>
+                <textarea name="" value = {this.state.user} className="form-control type_msg_sm" placeholder="Enter your username"></textarea>
             </div>
             
             <div className="input-group">
     			<div className="input-group-append">
     				<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
     			</div>
-    			<textarea name="" value = {this.user_message} className="form-control type_msg" placeholder="Type your message..."></textarea>
+    			<textarea name="" value = {this.state.user_message} className="form-control type_msg" placeholder="Type your message..."></textarea>
     			<div className="input-group-append" id="send">
     				<span className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></span>
     			</div>
