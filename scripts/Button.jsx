@@ -59,7 +59,14 @@ export class Button extends React.Component {
         this.setState({user: event.target.value});
         console.log('user', event.target.value);
     }
+    
+    canBeClicked() {
+    const {user_message} = this.state;
+    return user_message.length > 0;
+    }
+    
     render() {
+        let isEnabled = this.canBeClicked();
         return (
         <form onSubmit = {this.handleSubmit}>
             <div className="input-group" style={{paddingBottom:'5px'}}>
@@ -75,7 +82,7 @@ export class Button extends React.Component {
     			</div>
     			<textarea name="" value = {this.state.user_message} className="form-control type_msg" placeholder="Type your message..." onChange = {this.handleChangeMessage}></textarea>
     			<div className="input-group-append">
-    				<button type="submit" className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></button>
+    				<button disabled= {!isEnabled } type="submit" className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></button>
     			</div>
     		</div>
     	</form>
