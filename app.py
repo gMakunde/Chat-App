@@ -15,6 +15,9 @@ def hello():
 @socketio.on('connect')
 def on_connect():
     print('someone connected!')
+    socketio.emit('update', {
+        'data': 'Got your connection!'
+    })
 
 socketio.run(
     app,
