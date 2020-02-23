@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Socket } from './Socket'
 
-const User = {
-	username: '',
-	profilePic: false,
-	bot: false
+function User(username, profilePic, bot) {
+  this.username = username;
+  this.profilePic = profilePic;
+  this.bot = bot;
 }
 
-const Message = {
-	user: User,
-	msg: ''
+function Message(user, msg) {
+	this.user = user;
+	this.msg = msg;
 }
 
 
