@@ -88,6 +88,8 @@ export class MessagePanel extends React.Component {
 						<div className="card-header msg_head">
 							<div className="d-flex bd-highlight">
 								<div className="user_info">
+									<span>Chat it up!</span>
+									<p>{msgs.length} Messages</p>;
 								</div>
 							</div>
 						</div>

@@ -18,9 +18,6 @@ const usersOnline = <li className="active">
 
 const userCount = <span> 1 Person online </span>;
 
-const chatWith = <span>Chat with Username</span>;
-
-const messageCount = <p>1767 Messages</p>;
 
 const userPanel = <div className="row justify-content-center h-100">
 				<div className="col-md-4 col-xl-3 chat"><div className="card mb-sm-3 mb-md-0 contacts_card">
