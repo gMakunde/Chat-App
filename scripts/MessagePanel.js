@@ -130,7 +130,8 @@ export class MessagePanel extends React.Component {
 						<div className="card-body msg_card_body">
 						</div>
 						<div className="card-footer">
-						<MessageInput />
+							<InputUsername />
+							<InputMessage />
 						</div>
 					</div>
 				</div>
