@@ -11,17 +11,20 @@ const Message = {
 	msg: ''
 }
 
-function MessageInput(props){ 
-		
-		return(
-		<div>
-			<div className="input-group" style={{paddingBottom:'5px'}}>
-				<div className="input-group-append">
-					<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
-				</div>
-				<textarea name="" id="username" className="form-control type_msg_sm" placeholder="Enter your username"></textarea>
+function InputUsername(){
+	return (
+		<div className="input-group" style={{paddingBottom:'5px'}}>
+			<div className="input-group-append">
+				<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
 			</div>
-			<div className="input-group">
+			<textarea name="" id="username" className="form-control type_msg_sm" placeholder="Enter your username"></textarea>
+		</div>
+		);
+}
+
+function InputMessage(){
+	return(
+		<div className="input-group">
 				<div className="input-group-append">
 					<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
 				</div>
@@ -30,6 +33,14 @@ function MessageInput(props){
 					<span className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></span>
 				</div>
 			</div>
+		);
+}
+function MessageInput(props){ 
+		
+		return(
+		<div>
+			<InputUsername />
+			<InputMessage />
 		</div>
 	);
 }
