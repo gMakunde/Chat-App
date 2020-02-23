@@ -35,15 +35,6 @@ function InputMessage(){
 			</div>
 		);
 }
-function MessageInput(props){ 
-		
-		return(
-		<div>
-			<InputUsername />
-			<InputMessage />
-		</div>
-	);
-}
 
 function ProfilePicture(props){
 	if(props.bot) {
