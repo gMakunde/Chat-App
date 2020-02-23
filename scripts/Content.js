@@ -35,7 +35,7 @@ const userPanel = <div className="row justify-content-center h-100">
 				</div>;
 
 
-const title = <h1 style={{textAlign:"center", color:"white", paddingBottom:"20px", paddingTop:"20px"}}> Chat man, chat man, yea thats me! </h1>;
+const title = <h1 style={{textAlign:"center", color:"white", paddingBottom:"20px", paddingTop:"20px"}}> Chat man, chat man. Yea thats me! </h1>;
 
 export class Content extends React.Component {
 	constructor() {
