@@ -29,13 +29,10 @@ export class Button extends React.Component {
     handleSubmit(event){
     	event.preventDefault();
     	
-    	let user = new User;
-    	user.username = this.state.user;
+    	let user = new User(this.state.user);
     	this.state.user = user;
     	
-    	let message = new Message;
-    	message.user = this.state.user;
-    	message.msg = this.state.user_message;
+    	let message = new Message(this.state.user, this.state.user_message);
     	this.state.user_message = message;
     	
     	Socket.emit('new message', {
