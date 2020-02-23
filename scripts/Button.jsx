@@ -36,8 +36,11 @@ export class Button extends React.Component {
     	this.state.user_message = message;
     	
     	Socket.emit('new message', {
-    		'user_message': this.state.user_message,
-    		'user': this.state.user
+    		'user_message': this.state.user_message
+    	});
+    	
+    	Socket.emit('user', {
+    	    'user': this.state.user
     	});
     	
     	this.setState({

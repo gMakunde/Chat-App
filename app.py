@@ -18,6 +18,22 @@ def on_connect():
     socketio.emit('update', {
         'data': 'Got your connection!'
     })
+    
+@socketio.on('new message')
+def on_new_message(data):
+    print("Got an event for new message with data:", data)
+    message = data['user_message']
+    socketio.emit('number received', {
+        'number': message
+    })
+
+@socketio.on('user')
+def on_user(data):
+    print("Got an event for user with data:", data)
+    username = data['user']
+    socketio.emit('number received', {
+        'number': username
+    })
 
 socketio.run(
     app,
