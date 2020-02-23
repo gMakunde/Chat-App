@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Socket } from './Socket'
-
-
+import { Button } from './Button'
 
 function ProfilePicture(props){
 	if(props.bot) {
@@ -71,6 +69,7 @@ export class MessagePanel extends React.Component {
 				<div className="col-md-8 col-xl-6 chat">
 					<div className="card">
 						<div className="card-header msg_head">
+							<Response />
 							<div className="d-flex bd-highlight">
 								<div className="user_info">
 								</div>
@@ -79,8 +78,7 @@ export class MessagePanel extends React.Component {
 						<div className="card-body msg_card_body">
 						</div>
 						<div className="card-footer">
-							<InputUsername />
-							<InputMessage />
+							<Button />
 						</div>
 					</div>
 				</div>
