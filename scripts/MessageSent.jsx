@@ -10,7 +10,7 @@ export class MessageSent extends React.Component {
         this.state = {
 			user_message: '',
 			user: '',
-			chatbotCheck: <div />
+			chatbotSend: <div />
         };
         
         this.handleChangeMessage = this.handleChangeMessage.bind(this);
@@ -20,9 +20,8 @@ export class MessageSent extends React.Component {
     }
     
     handleSubmit(event){
-        this.state.chatbotCheck = <ChatBot />
     	event.preventDefault();
-    	
+    	this.state.chatbotSend = <ChatBot />
     	let user = new User(this.state.user);
     	this.state.user = user;
     	
@@ -41,7 +40,6 @@ export class MessageSent extends React.Component {
     	    user_message: '',
     	    user: ''
     	});
-        
         console.log('Sent a message to server!',this);
         console.log('User Name:', this.state.user);
         console.log('User Message:', this.state.user_message);
@@ -82,7 +80,7 @@ export class MessageSent extends React.Component {
     			<div className="input-group-append">
     				<button disabled= {!isEnabled } onClick={this.handleSubmit} className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></button>
     			</div>
-    			{this.state.chatbotCheck}
+    			{this.state.chatbotSend}
     		</div>
     	</div>
             );
