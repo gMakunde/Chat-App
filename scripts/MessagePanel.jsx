@@ -63,8 +63,7 @@ export class MessagePanel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        	'messages': [],
-        	'users': []
+        	'messages': []
         };
         this.componentDidMount = this.componentDidMount.bind(this);
     }
