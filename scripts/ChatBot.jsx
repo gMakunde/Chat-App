@@ -21,7 +21,14 @@ export class ChatBot extends React.Component {
     
     render() {
     	let msg = this.state.message;
-    	
+    	let botUser = new User('teenage chatbot', undefined , true);
+    	if(msg.msg.includes('!! about')){
+    	    const aboutMsg = '';
+    	    Socket.emit('new message', {
+    		'user_message': new Message(botUser, aboutMsg)
+    	});
+    	    
+    	}
     	
         return (
 			<div />
