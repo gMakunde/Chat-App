@@ -42,6 +42,13 @@ export class ChatBot extends React.Component {
     		'user_message': new Message(botUser, helpMsg)
     	    });
     	}
+    	if(msg.msg.includes('!! say')){
+    	    const replyIndex = 6 + msg.msg.search('!! say');
+    	    const somethingMsg = msg.msg.slice(replyIndex, msg.msg.length);
+    	    Socket.emit('new message', {
+    		'user_message': new Message(botUser, somethingMsg)
+    	    });
+    	}
     }
     
     render() {
