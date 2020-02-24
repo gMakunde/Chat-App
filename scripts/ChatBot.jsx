@@ -24,12 +24,14 @@ export class ChatBot extends React.Component {
         //todo print message when user enters
         let msg = this.state.user_message;
     	let botUser = new User('teenage chatbot', undefined , true);
+    	let prevCommand = false;
     	
     	if(msg.msg.includes('!! about')){
     	    const aboutMsg = 'Hello, my name is Jenny Wakeman, I am the teenage chatbot here to assist you';
     	    Socket.emit('new message', {
     		'user_message': new Message(botUser, aboutMsg)
     	    });
+    	    prevCommand = true;
     	}
     	if(msg.msg.includes('!! help')){
     	    const helpMsg = `
@@ -42,6 +44,7 @@ export class ChatBot extends React.Component {
     	    Socket.emit('new message', {
     		'user_message': new Message(botUser, helpMsg)
     	    });
+    	    prevCommand = true;
     	}
     	if(msg.msg.includes('!! dior')){
     	    const diorMsg = `Said I'm never lackin', always pistol packing
@@ -53,6 +56,7 @@ export class ChatBot extends React.Component {
     	    Socket.emit('new message', {
     		'user_message': new Message(botUser, diorMsg)
     	    });
+    	    prevCommand = true;
     	}
     	if(msg.msg.includes('!! say')){
     	    const replyIndex = 6 + msg.msg.search('!! say');
@@ -60,6 +64,7 @@ export class ChatBot extends React.Component {
     	    Socket.emit('new message', {
     		'user_message': new Message(botUser, somethingMsg)
     	    });
+    	    prevCommand = true;
     	}
     	if(msg.msg.includes('!! me')){
     	    const replyIndex = 5 + msg.msg.search('!! me');
@@ -67,8 +72,9 @@ export class ChatBot extends React.Component {
     	    Socket.emit('new message', {
     		'user_message': new Message(botUser, meMsg)
     	    });
+    	    prevCommand = true;
     	}
-    	else if(msg.msg.includes('!!')){
+    	if(msg.msg.includes('!!') && !prevCommand){
     	    const noticeMsg = "I noticed your message contained '!!' You're either really excited or.. you want to use a command. To see the commands type in '!! help'";
     	    Socket.emit('new message', {
     		'user_message': new Message(botUser, noticeMsg)
