@@ -1,5 +1,6 @@
 import os
 import flask, flask_sqlalchemy, flask_socketio
+import models
 
 app = flask.Flask(__name__)
 
