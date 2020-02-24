@@ -69,6 +69,12 @@ export class ChatBot extends React.Component {
     		'user_message': new Message(botUser, meMsg)
     	    });
     	}
+    	else if(msg.msg.includes('!!')){
+    	    const noticeMsg = "I noticed your message contained '!!' You're either really excited or.. you want to use a command. To see the commands type in '!! help'";
+    	    Socket.emit('new message', {
+    		'user_message': new Message(botUser, noticeMsg)
+    	    });
+    	}
     }
     
     render() {
