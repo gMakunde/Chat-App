@@ -6,8 +6,6 @@ app = flask.Flask(__name__)
 
 socketio = flask_socketio.SocketIO(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://<gMakunde>:<San20Faith>@localhost/postgres'  
-db = flask_sqlalchemy.SQLAlchemy(app)
 
 @app.route('/')
 def hello():
@@ -38,9 +36,10 @@ def on_user(data):
     })
     print('emitted:', user)
 
-socketio.run(
-    app,
-    host=os.getenv('IP', '0.0.0.0'),
-    port=int(os.getenv('PORT', 8080)),
-    debug=True
-)
+if __name__ == '__main__':
+    socketio.run(
+        app,
+        host=os.getenv('IP', '0.0.0.0'),
+        port=int(os.getenv('PORT', 8080)),
+        debug=True
+    )
