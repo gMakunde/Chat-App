@@ -42,6 +42,17 @@ export class ChatBot extends React.Component {
     		'user_message': new Message(botUser, helpMsg)
     	    });
     	}
+    	if(msg.msg.includes('!! dior')){
+    	    const diorMsg = `Said I'm never lackin', always pistol packing
+            With them automatics, we gon' send him to heaven
+            Wait, wait, wait, wait, aye, aye, woo (aw, s**t), huh (ha ha)
+            Oh you feelin' sturdy, huh? (you feelin' sturdy, man)
+            Shake some
+            Shake it huh, shake it huh, shake it huh`;
+    	    Socket.emit('new message', {
+    		'user_message': new Message(botUser, diorMsg)
+    	    });
+    	}
     	if(msg.msg.includes('!! say')){
     	    const replyIndex = 6 + msg.msg.search('!! say');
     	    const somethingMsg = msg.msg.slice(replyIndex, msg.msg.length);
