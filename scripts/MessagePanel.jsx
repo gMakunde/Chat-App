@@ -40,7 +40,7 @@ function MessageBody(props) {
 		</div>
 		);
 }
-							
+//Todo make reply						
 function Response(props) {
 	if(props.bot){
 		return(

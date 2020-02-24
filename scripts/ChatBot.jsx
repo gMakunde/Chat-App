@@ -21,9 +21,11 @@ export class ChatBot extends React.Component {
     }
     
     handleBotMessage(){
+        //todo print message when user enters
         console.log('hi there')
         let msg = this.state.user_message;
     	let botUser = new User('teenage chatbot', undefined , true);
+    	
     	if(msg.msg.includes('!! about')){
     	    const aboutMsg = 'Hello, my name is Jenny Wakeman, I am the teenage chatbot here to assist you';
     	    Socket.emit('new message', {
@@ -32,11 +34,11 @@ export class ChatBot extends React.Component {
     	}
     	if(msg.msg.includes('!! help')){
     	    const helpMsg = `
-    	    !! about: gives you a description of who I am
-    	    !! help: gives you the list of all the commands
-    	    !! say<something>: I will say anything you tell me to following that command
-    	    !! dior: I will recite the first bar of pop smokes song dior #RIPpopSmoke
-    	    !! me<something>: I will say whatever you tell me to followed by "yea thatss meee!"
+    	    about: gives you a description of who I am
+    	    help: gives you the list of all the commands
+    	    say<something>: I will say anything you tell me to following that command
+    	    dior: I will recite the first bar of pop smokes song dior #RIPpopSmoke
+    	    me<something>: I will say whatever you tell me to followed by "yea thatss meee!"
     	    `;
     	    Socket.emit('new message', {
     		'user_message': new Message(botUser, helpMsg)

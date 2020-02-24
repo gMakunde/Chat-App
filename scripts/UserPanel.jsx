@@ -48,6 +48,8 @@ export class UserPanel extends React.Component {
     }
     
     componentDidMount(){
+    	//todo avoid duplicate users
+    	//todo emit users list
     	Socket.on('user received', (data) =>{
     		this.state.users.push(data['user']);
     		this.setState({

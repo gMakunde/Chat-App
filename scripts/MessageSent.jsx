@@ -35,7 +35,7 @@ export class MessageSent extends React.Component {
     	Socket.emit('user', {
     	    'user': this.state.user
     	});
-    	
+    	// todo: remove user from setState
     	this.setState({
     	    user_message: '',
     	    user: ''
