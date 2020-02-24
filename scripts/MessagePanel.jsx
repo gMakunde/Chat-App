@@ -79,27 +79,22 @@ export class MessagePanel extends React.Component {
     
     render() {
     	let msgs = this.state.messages;
-    	console.log("message list",msgs);
         return (
-            <div className="container-fluid h-100">
-				<div className="col-md-8 col-xl-6 chat">
-					<div className="card">
-						<div className="card-header msg_head">
-							<div className="d-flex bd-highlight">
-								<div className="user_info">
-									<span>Chat it up!</span>
-									<p>{msgs.length} Messages</p>;
-								</div>
-							</div>
+			<div className="col-md-8 col-xl-6 chat">
+				<div className="card">
+					<div className="card-header msg_head">
+						<div className="user_info">
+							<span>Chat it up!</span>
+							<p>{msgs.length} Messages</p>
 						</div>
-						<div className="card-body msg_card_body">
-						{ msgs.map( msg =>
-							<Response msg={msg.msg} user={msg.user.username} pp={msg.user.profilePic} bot={msg.user.bot} />
-						)}
-						</div>
-						<div className="card-footer">
-							<MessageSent />
-						</div>
+					</div>
+					<div className="card-body msg_card_body">
+					{ msgs.map( msg =>
+						<Response msg={msg.msg} user={msg.user.username} pp={msg.user.profilePic} bot={msg.user.bot} />
+					)}
+					</div>
+					<div className="card-footer">
+						<MessageSent />
 					</div>
 				</div>
 			</div>

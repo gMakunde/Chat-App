@@ -10,14 +10,14 @@ export class Content extends React.Component {
     render() {
         return (
         	<div>
-	        	{title}
+        		{title}
 	        	<div className="container-fluid h-100">
-	        		<div class="row justify-content-center h-100">
-			        	<UserPanel />
-			        	<MessagePanel />
-		        	</div>
-		        </div>
-        	</div>
+					<div className="row justify-content-center h-100">
+						<UserPanel />
+						<MessagePanel />
+					</div>
+				</div>
+			</div>
         	);
         
     }
