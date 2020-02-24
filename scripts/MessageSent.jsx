@@ -1,17 +1,6 @@
 import * as React from 'react';
 import { Socket } from './Socket'
-
-function User(username, profilePic, bot) {
-  this.username = username;
-  this.profilePic = profilePic;
-  this.bot = bot;
-}
-
-function Message(user, msg, attachment) {
-	this.user = user;
-	this.msg = msg;
-	this.attachment = attachment;
-}
+import {User, Message} from './MessageObjects'
 
 
 export class MessageSent extends React.Component {

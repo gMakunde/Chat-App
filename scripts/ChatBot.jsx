@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Socket } from './Socket'
+import {User, Message} from './MessageObjects'
 
 export class ChatBot extends React.Component {
     constructor(props) {
