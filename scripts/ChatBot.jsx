@@ -6,31 +6,35 @@ export class ChatBot extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        	'user_message': '',
-        	bot_user: ''
+        	'user_message': false,
         };
         this.componentDidMount = this.componentDidMount.bind(this);
+        this.handleBotMessage=this.handleBotMessage.bind(this);
     }
     
     componentDidMount(){
     	Socket.on('message received', (data) =>{
     		this.setState({
-    			'user_message': this.state.message
+    			'user_message': data['message']
     		});
     	})
     }
     
-    render() {
-    	let msg = this.state.message;
+    handleBotMessage(){
+        let msg = this.state.user_message;
     	let botUser = new User('teenage chatbot', undefined , true);
     	if(msg.msg.includes('!! about')){
-    	    const aboutMsg = '';
+    	    const aboutMsg = 'Hello, my name is Jenny Wakeman, I am the teenage chatbot here to assist you';
     	    Socket.emit('new message', {
     		'user_message': new Message(botUser, aboutMsg)
-    	});
-    	    
+    	    });
     	}
-    	
+    }
+    
+    render() {
+        if(this.state.user_message){
+            this.handleBotMessage();
+        }
         return (
 			<div />
             );

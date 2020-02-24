@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Socket } from './Socket'
 import {User, Message} from './MessageObjects'
+import {ChatBot} from './ChatBot'
 
 
 export class MessageSent extends React.Component {
@@ -8,7 +9,8 @@ export class MessageSent extends React.Component {
         super(props);
         this.state = {
 			user_message: '',
-			user: ''
+			user: '',
+			chatbotCheck: <div />
         };
         
         this.handleChangeMessage = this.handleChangeMessage.bind(this);
@@ -18,6 +20,7 @@ export class MessageSent extends React.Component {
     }
     
     handleSubmit(event){
+        this.state.chatbotCheck = <ChatBot />
     	event.preventDefault();
     	
     	let user = new User(this.state.user);
@@ -79,6 +82,7 @@ export class MessageSent extends React.Component {
     			<div className="input-group-append">
     				<button disabled= {!isEnabled } onClick={this.handleSubmit} className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></button>
     			</div>
+    			{this.state.chatbotCheck}
     		</div>
     	</div>
             );
