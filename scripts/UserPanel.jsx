@@ -45,17 +45,27 @@ export class UserPanel extends React.Component {
         	'users': []
         };
         this.componentDidMount = this.componentDidMount.bind(this);
+        this.avoidDuplicateUsers = this.avoidDuplicateUsers.bind(this);
+    }
+    
+    avoidDuplicateUsers(value, data){
+    	
     }
     
     componentDidMount(){
-    	//todo avoid duplicate users
     	//todo emit users list
     	Socket.on('user received', (data) =>{
-    		this.state.users.push(data['user']);
-    		this.setState({
-    			'users': this.state.users
+    		const duplicate = this.state.users.map( user => {
+    			return user.username == data['user'].username;
     		});
-    	})
+    		
+    		if(!duplicate.includes(true)){
+    			this.state.users.push(data['user'])
+	    		this.setState({
+	    			'users': this.state.users
+	    		});
+    		}
+    	});
     }
     
     render() {

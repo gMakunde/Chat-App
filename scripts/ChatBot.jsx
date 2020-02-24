@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Socket } from './Socket'
-import {User, Message} from './MessageObjects'
+import { Socket } from './Socket';
+import {User, Message} from './MessageObjects';
 
 export class ChatBot extends React.Component {
     constructor(props) {
@@ -17,12 +17,11 @@ export class ChatBot extends React.Component {
     		this.setState({
     			'user_message': data['message']
     		});
-    	})
+    	});
     }
     
     handleBotMessage(){
         //todo print message when user enters
-        console.log('hi there')
         let msg = this.state.user_message;
     	let botUser = new User('teenage chatbot', undefined , true);
     	
@@ -78,7 +77,6 @@ export class ChatBot extends React.Component {
     }
     
     render() {
-        console.log('hi there')
         if(this.state.user_message && !this.state.user_message.user.bot){
             this.handleBotMessage();
         }
