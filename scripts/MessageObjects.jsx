@@ -11,4 +11,3 @@ export function Message(user, msg, attachment) {
 	this.msg = msg;
 	this.attachment = attachment;
 }
-//
