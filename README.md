@@ -28,4 +28,4 @@ make it persist and use sessions for users.
 
 ### Chatbox Walkthough GIF
 
-<img src="http://g.recordit.co/PQ6HBQTgZt.gif" width=500><br>
+<img src="http://g.recordit.co/PQ6HBQTgZt.gif"><br>
