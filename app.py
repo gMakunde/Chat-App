@@ -6,7 +6,6 @@ app = flask.Flask(__name__)
 
 socketio = flask_socketio.SocketIO(app)
 
-
 @app.route('/')
 def hello():
     return flask.render_template('index.html')
@@ -35,6 +34,15 @@ def on_user(data):
         'user': user
     })
     print('emitted:', user)
+
+@socketio.on('users list')
+def on_new_user(data):
+    print("Got an event for user with data:", data)
+    users = data['users_list']
+    socketio.emit('users list', {
+        'users_list': users
+    })
+    print('emitted:', users)
 
 if __name__ == '__main__':
     socketio.run(

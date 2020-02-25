@@ -64,6 +64,9 @@ export class UserPanel extends React.Component {
 	    		this.setState({
 	    			'users': this.state.users
 	    		});
+	    		Socket.emit('users list', {
+		    		'users_list': this.state.users
+		    	});
     		}
     	});
     }

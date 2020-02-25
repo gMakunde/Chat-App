@@ -27,7 +27,7 @@ export class ChatBot extends React.Component {
     	let prevCommand = false;
     	
     	if(msg.msg.includes('!! about')){
-    	    const aboutMsg = 'Hello, my name is Jenny Wakeman, I am the teenage chatbot here to assist you';
+    	    const aboutMsg = "Hey there big fella! My name is Jenny Wakeman, I am the teenage chatbot here to assist you. To see my commands type '!! help'";
     	    Socket.emit('new message', {
     		'user_message': new Message(botUser, aboutMsg)
     	    });
