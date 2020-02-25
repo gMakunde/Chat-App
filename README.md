@@ -1,46 +1,31 @@
-# lecture-9-react
+## What is the theme you’ll be using for project 2? 
+The theme that I chose for this project is Haha Davis sayings.
 
-Let's get React up and running with Flask. Run these commands in your Project 2 (or scratch) folder.
+## How did you incorporate your theme within your project? 
+The title is "chat man chat man yea thats me" and theres a command to get the robot to say that as well. Also the robot greets people by saying "big fella!"
 
-## Upgrade Node version to 7
+## What are at least 5 issues you encountered with your project? How did you fix them? 
+1. With every message a new user would appear in the users panel
+  solution: decided to create a users object and emit it seperately. then only added to the list if the username wasnt unique
+  
+2. Wouldn't Deploy to heroku
+  solution: added requirements procfile and then deleted and recreated the heroku app
+  
+3. Bot would call its own functions in an infinite loop
+  solution: used the bot element from the user object to make sure only users can call bot commands
 
-```$ nvm install 7```
+4. The bot would raise an error for incorrect commands even with correct commands
+  solution: created a boolean variable that turns true if any commands are used before the raise error if statement.
+ 
+5. CSS was not displaying correctly
+  solution: I had to look through the bootstrap css url and the local one to change and make the page look how i desired.
 
-## Install Webpack 
+## What are known problems, if any, with your project?
+The way i mapped data in one of the files should each have a unique key
 
-This line installs Webpack on your Cloud9 workspace.
+## What would you do to improve your project in the future?
+make it persist and use sessions for users.
 
-```$npm install webpack --save-dev```
+### Chatbox Walkthough GIF
 
-## Install `npm` dependencies from `package.json`
-
-This line starts `npm`, which looks inside our `package.json` file, retrieves a list of
-packages, and installs them to the `node_modules` folder inside your repository. `node_modules` folder **does not** need to be pushed to Heroku or GitHub.
-
-```$ npm install```
-
-**Note: This command MUST be ran from the folder that contains package.json! You will get an error if you are in a different folder!**
-
-## Compile Javascript using Webpack
-
-This line starts up Webpack, which looks inside `webpack.config.js`, loads
-configuration options, and starts transpiling your JS code into `static/script.js`.
-
-```$ npm run watch```
-
-(The program should not stop running. Leave it running.)
-
-## Run the web app
-
-Open a new terminal in your AWS Cloud9 environment (click the little green + button near your current terminal and choose 'New Terminal'). Run `app.py` (from the same folder, but new terminal) and verify that the React renders. You should see "Hello World from React!" in the preview.
-
-**Do not manually edit `static/script.js`! It will update when you make changes. You do need to push this file to Heroku and GitHub**
-
-## Edit HTML
-
-Find the text that says "Hello World from React!" Make a change. Your webpack should still be running in the other terminal (and some logs will spit out). Try previewing the changes in the Preview Window in AWS. Notice that nothing is updating. You need to click 'Pop out to New Window', and hard refresh the browser (see command below). 
-
-PS This is a known problem for a bunch of people. Unfortunately, there is no known fix besides turning off the cache option for the whole browser (which we don't want to do).
-
-**You will always need to do a hard refresh (Ctrl+R/Cmd+Shift+R) of an external tab in your browser (while Webpack is running) to see changes**
-
+<img src="http://g.recordit.co/PQ6HBQTgZt.gif" width=250><br>
