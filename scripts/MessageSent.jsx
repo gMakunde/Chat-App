@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Socket } from './Socket'
 import {User, Message} from './MessageObjects'
 import {ChatBot} from './ChatBot'
+import { Login } from './Login'
 
 
 export class MessageSent extends React.Component {
@@ -64,6 +65,7 @@ export class MessageSent extends React.Component {
         let isEnabled = this.canBeClicked();
         return (
         <div>
+        <Login />
             <div className="input-group" style={{paddingBottom:'5px'}}>
                 <div className="input-group-append">
                 	<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
