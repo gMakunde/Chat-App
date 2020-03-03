@@ -18,13 +18,22 @@ export class MessageSent extends React.Component {
         this.handleChangeUser = this.handleChangeUser.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.canBeClicked = this.canBeClicked.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+    }
+    
+    componentDidMount(){
+    	Socket.on('user received', (data) =>{
+    		console.log('message sent hi there')
+    		this.state.user = data['user']
+    		});
     }
     
     handleSubmit(event){
     	event.preventDefault();
     	this.state.chatbotSend = <ChatBot />
-    	let user = new User(this.state.user);
-    	this.state.user = user;
+    	Socket.on('user received', (data) =>{
+    		this.state.user = data['user']
+    	});
     	
     	let message = new Message(this.state.user, this.state.user_message);
     	this.state.user_message = message;
@@ -37,8 +46,7 @@ export class MessageSent extends React.Component {
     	    'user': this.state.user
     	});
     	this.setState({
-    	    user_message: '',
-    	    user: this.state.user.username
+    	    user_message: ''
     	});
         console.log('Sent a message to server!',this);
         console.log('User Name:', this.state.user);
@@ -56,23 +64,18 @@ export class MessageSent extends React.Component {
     }
     
     canBeClicked() {
+    console.log('user:', this.state.user)
     const {user_message} = this.state;
     const {user} = this.state;
-    return ((user_message.length > 0) && (user.length > 0));
+    return ((user_message.length > 0) && (user.username.length > 0));
     }
     
     render() {
         let isEnabled = this.canBeClicked();
         return (
         <div>
-        <Login />
-            <div className="input-group" style={{paddingBottom:'5px'}}>
-                <div className="input-group-append">
-                	<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>
-                </div>
-                <textarea name="" value = {this.state.user} className="form-control type_msg_sm" onChange = {this.handleChangeUser} placeholder="Enter your username"></textarea>
-            </div>
-            
+            <Login />
+            <div style={{paddingBottom:'5px'}}/>
             <div className="input-group">
     			<div className="input-group-append">
     				<span className="input-group-text attach_btn"><i className="fas fa-paperclip"></i></span>

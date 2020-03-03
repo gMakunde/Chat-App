@@ -53,8 +53,8 @@ export class UserPanel extends React.Component {
     }
     
     componentDidMount(){
-    	//todo emit users list
     	Socket.on('user received', (data) =>{
+    		console.log('user panel hi there')
     		const duplicate = this.state.users.map( user => {
     			return user.username == data['user'].username;
     		});
