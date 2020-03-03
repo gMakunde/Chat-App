@@ -4,7 +4,6 @@ import { Socket } from './Socket'
 
 import { Content } from './Content';
 
-
 ReactDOM.render(
     <Content />,
     document.getElementById('content')
