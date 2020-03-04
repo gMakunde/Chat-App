@@ -1,16 +1,13 @@
 
 class ChatBot:
-    def __init__(self):
-        self.user_message = ''
+    def __init__(self, user_message):
+        self.user_message = user_message
     
     def bot_reply(self):
-        prev = False
         if '!! about' in self.user_message:
-    	    prev = True
     	    return "Hey there big fella! My name is Jenny Wakeman, I am the teenage chatbot here to assist you. To see my commands type '!! help'"
     	    
         if '!! help' in self.user_message:
-    	    prev = True
     	    return """
     	    (!! about): gives you a description of who I am
     	    (!! help): gives you the list of all the commands
@@ -19,7 +16,6 @@ class ChatBot:
     	    (!! me)<something>: I will say whatever you tell me to followed by "yea thatss meee!"
     	    """
         if '!! dior' in self.user_message:
-    	    prev = True
     	    return """Said I'm never lackin', always pistol packing
             With them automatics, we gon' send him to heaven
             Wait, wait, wait, wait, aye, aye, woo (aw, s**t), huh (ha ha)
@@ -28,14 +24,12 @@ class ChatBot:
             Shake it huh, shake it huh, shake it huh"""
             
         if '!! say' in self.user_message:
-    	    prev = True
     	    replyIndex = 6 + self.user_message.find('!! say')
     	    return self.user_message[replyIndex:]
     	    
         if '!! me' in self.user_message:
-    	    prev = True
     	    replyIndex = 5 + self.user_message.find('!! me')
     	    return self.user_message[replyIndex:] + " yea thatss meee!"
 
-        if '!!' in self.user_message and prev == False:
+        if '!!' in self.user_message:
     	    return "I noticed your message contained '!!' You're either really excited or.. you want to use a command. To see the commands type in '!! help'";

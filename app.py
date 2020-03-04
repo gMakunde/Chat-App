@@ -1,6 +1,7 @@
 import os
 import flask, flask_sqlalchemy, flask_socketio
 import models
+import ChatBot
 
 app = flask.Flask(__name__)
 
@@ -21,6 +22,15 @@ def on_connect():
 def on_new_message(data):
     print("Got an event for new message with data:", data)
     message = data['user_message']
+    if '!!' in message['msg']:
+        c = ChatBot.ChatBot(message['msg'])
+        bot_reply = c.bot_reply()
+        message['msg'] = bot_reply
+        message['user']['username'] = 'Teenage Chatbot'
+        message['user']['profilePic'] = None
+        message['user']['bot'] = True
+        message['attachment'] = None
+    
     socketio.emit('message received', {
         'message': message
     })
@@ -32,6 +42,17 @@ def on_user(data):
     user = data['user']
     socketio.emit('user received', {
         'user': user
+    })
+    
+    on_new_message({'user_message': 
+        {'user': 
+            {'username': 
+                'Teenage Chatbot', 
+                'profilePic': None, 
+                'bot': True
+            }, 
+            'msg': '!! about'
+        }
     })
     print('emitted:', user)
 
