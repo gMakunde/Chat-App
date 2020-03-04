@@ -25,11 +25,14 @@ def on_new_message(data):
     if '!!' in message['msg']:
         c = ChatBot.ChatBot(message['msg'])
         bot_reply = c.bot_reply()
-        message['msg'] = bot_reply
-        message['user']['username'] = 'Teenage Chatbot'
-        message['user']['profilePic'] = None
-        message['user']['bot'] = True
-        message['attachment'] = None
+        message = {'user': 
+                    {
+                    'username': 'Teenage Chatbot', 
+                    'profilePic': None, 
+                    'bot': True
+                    }, 
+                    'msg': bot_reply
+                }
     
     socketio.emit('message received', {
         'message': message
