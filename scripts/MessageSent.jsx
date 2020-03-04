@@ -39,9 +39,6 @@ export class MessageSent extends React.Component {
     		'user_message': this.state.user_message
     	});
     	
-    	Socket.emit('user', {
-    	    'user': this.state.user
-    	});
     	this.setState({
     	    user_message: ''
     	});
