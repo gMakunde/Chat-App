@@ -2,6 +2,8 @@ import os
 import flask, flask_sqlalchemy, flask_socketio
 import models
 import ChatBot
+from google.oauth2 import id_token
+from google.auth.transport import requests
 
 app = flask.Flask(__name__)
 
@@ -42,7 +44,13 @@ def on_new_message(data):
 @socketio.on('user')
 def on_user(data):
     print("Got an event for user with data:", data)
-    user = data['user']
+    user = {}
+    user = {
+        'username': data['user']['profileObj']['name'], 
+        'profilePic': data['user']['profileObj']['imageUrl'], 
+        'bot': True
+            }
+    
     socketio.emit('user received', {
         'user': user
     })

@@ -1,22 +1,22 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
-import { User } from './MessageObjects';
 import { Socket } from './Socket'
+/*global gapi*/
 
 export class Login extends React.Component{
-
   constructor (props, context) {
     super(props, context);
   }
 
   responseGoogle (googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
-    Socket.emit('user', {
-      'user': new User(profile.getName(), profile.getImageUrl(), false)
+    let auth = gapi.auth2.getAuthInstance();
+    let user = auth.currentUser.get();
+    if(user.isSignedIn()) {
+      console.log("google token" + user.getAuthResponse().id_token);
+    }
+    console.log("user:", googleUser)
+  Socket.emit('user', {
+      'user': googleUser
     });
   }
 
