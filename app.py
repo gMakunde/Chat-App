@@ -48,7 +48,7 @@ def on_user(data):
     user = {
         'username': data['user']['profileObj']['name'], 
         'profilePic': data['user']['profileObj']['imageUrl'], 
-        'bot': True
+        'bot': False
             }
     
     socketio.emit('user received', {
