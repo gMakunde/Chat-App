@@ -70,6 +70,7 @@ def on_new_message(data):
         message['hyperLink']
     except:
         message['hyperLink'] = False
+    
     new_message = models.Message(message['user']['username'], message['user']['profilePic'], message['user']['bot'], message['msg'], message['imageLink'], message['hyperLink'])
     models.db.session.add(new_message)
     models.db.session.commit()
