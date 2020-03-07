@@ -4,6 +4,41 @@ The theme that I chose for this project is Haha Davis sayings.
 ## How did you incorporate your theme within your project? 
 The title is "chat man chat man yea thats me" and theres a command to get the robot to say that as well. Also the robot greets people by saying "big fella!"
 
+## What are at least 4 issues you encountered with your projectsince c? How did you fix them? 
+1. The database would not work with heroku__
+  solution: used the correct env key that corresponds to heroku__
+  
+2. google sign in did not work__
+  solution: looked back at the slides and documentation and noticed slight errors to fix__
+  
+3. how to difrreentiaite between a hyperlink and an image adress__
+  solution: if it was a valid link I searched for image file type names in the strings__
+
+4. google sign in doesnt change after user logs in__
+  solution: __
+
+## What are known problems, if any, with your project?
+The way i mapped data in one of the files should each have a unique key
+when mutiple users log in it sometimes sends messages witht he wrong user attached
+
+## What would you do to improve your project in the future?
+use sessions for users and fix the bugs listed above.
+
+### Chatbox Walkthough GIF
+
+<img src="http://g.recordit.co/PQ6HBQTgZt.gif"><br>
+
+
+
+
+
+
+## What is the theme you’ll be using for project 2? 
+The theme that I chose for this project is Haha Davis sayings.
+
+## How did you incorporate your theme within your project? 
+The title is "chat man chat man yea thats me" and theres a command to get the robot to say that as well. Also the robot greets people by saying "big fella!"
+
 ## What are at least 5 issues you encountered with your project? How did you fix them? 
 1. With every message a new user would appear in the users panel
   solution: decided to create a users object and emit it seperately. then only added to the list if the username wasnt unique
