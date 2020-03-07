@@ -5,6 +5,7 @@ import ChatBot
 from google.oauth2 import id_token
 from google.auth.transport import requests
 from rfc3987 import parse
+import psycopg2
 
 app = flask.Flask(__name__)
 
@@ -17,9 +18,21 @@ def hello():
 @socketio.on('connect')
 def on_connect():
     print('someone connected!')
-    socketio.emit('update', {
-        'data': 'Got your connection!'
-    })
+    messages = models.Message.query.all()
+    for message in messages:
+        socketio.emit('message received', {
+        'message': 
+            {'user': 
+                {
+                'username': message.user_name, 
+                'profilePic': message.user_profile_pic, 
+                'bot': message.bot
+                }, 
+                'msg': message.message,
+                'imageLink': message.imageLink,
+                'hyperLink': message.hyperLink
+            }
+        })
     
 @socketio.on('new message')
 def on_new_message(data):
@@ -46,6 +59,18 @@ def on_new_message(data):
     socketio.emit('message received', {
         'message': message
     })
+    
+    try:
+        message['imageLink']
+    except:
+        message['imageLink'] = False
+    try:
+        message['hyperLink']
+    except:
+        message['hyperLink'] = False
+    new_message = models.Message(message['user']['username'], message['user']['profilePic'], message['user']['bot'], message['msg'], message['imageLink'], message['hyperLink'])
+    models.db.session.add(new_message)
+    models.db.session.commit()
     print("emitted:", message)
 
 def valid_uri(message):
@@ -53,7 +78,6 @@ def valid_uri(message):
         parse(message, rule='IRI')
         return True
     except:
-        print("kill moe")
         return False
 
 @socketio.on('user')
@@ -81,15 +105,6 @@ def on_user(data):
         }
     })
     print('emitted:', user)
-
-@socketio.on('users list')
-def on_new_user(data):
-    print("Got an event for user with data:", data)
-    users = data['users_list']
-    socketio.emit('users list', {
-        'users_list': users
-    })
-    print('emitted:', users)
 
 if __name__ == '__main__':
     socketio.run(
