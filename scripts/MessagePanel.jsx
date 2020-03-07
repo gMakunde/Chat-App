@@ -35,7 +35,7 @@ function MessageBody(props) {
 	}
 	if(props.link){
 		return(
-		<div className="msg_cotainer_send">
+		<div className="msg_cotainer">
 			<a href={props.msg}> {props.msg} </a>
 			<span className="msg_time">{props.user}</span>
 		</div>
@@ -43,7 +43,7 @@ function MessageBody(props) {
 	}
 	if(props.img){
 		return(
-		<div className="msg_cotainer_send">
+		<div className="msg_cotainer">
 			<img src={props.msg}/>
 			<span className="msg_time">{props.user}</span>
 		</div>
