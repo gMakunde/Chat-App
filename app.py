@@ -4,6 +4,7 @@ import models
 import ChatBot
 from google.oauth2 import id_token
 from google.auth.transport import requests
+from rfc3987 import parse
 
 app = flask.Flask(__name__)
 
@@ -24,7 +25,7 @@ def on_connect():
 def on_new_message(data):
     print("Got an event for new message with data:", data)
     message = data['user_message']
-    if '!!' in message['msg']:
+    if '!!' == message['msg'][:2]:
         c = ChatBot.ChatBot(message['msg'])
         bot_reply = c.bot_reply()
         message = {'user': 
@@ -35,7 +36,7 @@ def on_new_message(data):
                     }, 
                     'msg': bot_reply
                 }
-    
+    print("is URL: ", parse('http://fdasdf.fdsfîășîs.fss/ăîăî', rule='IRI'))
     socketio.emit('message received', {
         'message': message
     })
@@ -57,8 +58,8 @@ def on_user(data):
     
     on_new_message({'user_message': 
         {'user': 
-            {'username': 
-                'Teenage Chatbot', 
+            {
+                'username': 'Teenage Chatbot', 
                 'profilePic': None, 
                 'bot': True
             }, 
