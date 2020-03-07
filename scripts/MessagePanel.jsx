@@ -93,6 +93,12 @@ export class MessagePanel extends React.Component {
     			'messages': this.state.messages
     		});
     	})
+    	Socket.on('message_list received', (data) =>{
+    		this.state.messages = data['messages'];
+    		this.setState({
+    			'messages': this.state.messages
+    		});
+    	})
     }
     
     render() {

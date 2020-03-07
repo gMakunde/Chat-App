@@ -19,20 +19,22 @@ def hello():
 def on_connect():
     print('someone connected!')
     messages = models.Message.query.all()
+    message_list = []
     for message in messages:
-        socketio.emit('message received', {
-        'message': 
-            {'user': 
-                {
-                'username': message.user_name, 
-                'profilePic': message.user_profile_pic, 
-                'bot': message.bot
-                }, 
-                'msg': message.message,
-                'imageLink': message.imageLink,
-                'hyperLink': message.hyperLink
-            }
+        message_list.append({'user': 
+            {
+            'username': message.user_name, 
+            'profilePic': message.user_profile_pic, 
+            'bot': message.bot
+            }, 
+            'msg': message.message,
+            'imageLink': message.imageLink,
+            'hyperLink': message.hyperLink
         })
+    
+    socketio.emit('message_list received', {
+    'messages': message_list
+    })
     
 @socketio.on('new message')
 def on_new_message(data):
