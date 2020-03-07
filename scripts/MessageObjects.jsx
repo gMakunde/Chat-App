@@ -6,8 +6,9 @@ export function User(username, profilePic, bot) {
   this.bot = bot;
 }
 
-export function Message(user, msg, attachment) {
+export function Message(user, msg, attachment, imageLink, hyperLink) {
 	this.user = user;
 	this.msg = msg;
-	this.attachment = attachment;
+	this.imageLink = imageLink;
+	this.hyperLink = hyperLink;
 }

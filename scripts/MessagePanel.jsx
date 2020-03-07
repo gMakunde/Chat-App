@@ -33,6 +33,22 @@ function MessageBody(props) {
 		</div>
 		);
 	}
+	if(props.link){
+		return(
+		<div className="msg_cotainer_send">
+			<a href={props.msg}> {props.msg} </a>
+			<span className="msg_time">{props.user}</span>
+		</div>
+		);
+	}
+	if(props.img){
+		return(
+		<div className="msg_cotainer_send">
+			<img src={props.msg}/>
+			<span className="msg_time">{props.user}</span>
+		</div>
+		);
+	}
 	return(
 		<div className="msg_cotainer">
 			{props.msg}
@@ -53,7 +69,10 @@ function Reply(props) {
 	return (
 		<div className="d-flex justify-content-start mb-4">
 			<ProfilePicture pp={props.pp} botpp={false} />
-			<MessageBody msg={props.msg} user={props.user} bot={props.bot} />
+			<MessageBody 
+			msg={props.msg} user={props.user} bot={props.bot} 
+			img={props.img} link={props.link} 
+			/>
 		</div>
 	);
 }
@@ -89,7 +108,11 @@ export class MessagePanel extends React.Component {
 					</div>
 					<div className="card-body msg_card_body">
 					{ msgs.map( msg =>
-						<Reply msg={msg.msg} user={msg.user.username} pp={msg.user.profilePic} bot={msg.user.bot} />
+						<Reply 
+						msg={msg.msg} user={msg.user.username} 
+						pp={msg.user.profilePic} bot={msg.user.bot} 
+						img={msg.imageLink} link={msg.hyperLink} 
+						/>
 					)}
 					</div>
 					<div className="card-footer">

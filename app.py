@@ -36,11 +36,25 @@ def on_new_message(data):
                     }, 
                     'msg': bot_reply
                 }
-    print("is URL: ", parse('http://fdasdf.fdsfîășîs.fss/ăîăî', rule='IRI'))
+                
+    if valid_uri(message["msg"]):
+        if ".jpg" in message["msg"] or ".png" in message["msg"] or ".gif" in message["msg"] or ".jpeg" in message["msg"]:
+            message["imageLink"] = True
+        else:
+            message["hyperLink"] = True
+            
     socketio.emit('message received', {
         'message': message
     })
     print("emitted:", message)
+
+def valid_uri(message):
+    try: 
+        parse(message, rule='IRI')
+        return True
+    except:
+        print("kill moe")
+        return False
 
 @socketio.on('user')
 def on_user(data):
