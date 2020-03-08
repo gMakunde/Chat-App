@@ -15,7 +15,7 @@ the bot now is named "haha chatbot" with haha davis's picture. All his commands 
   solution: if it was a valid link I searched for image file type names in the strings__
 
 4. google sign in doesnt change after user logs in__
-  solution: __
+  solution: set the state to be a disabled button that says logged in__
 5. I wanted to send a picture from the chatbot anytime someone used the dior command__
   solution: I retured a tuple and used recursion to send each message separetly
 
