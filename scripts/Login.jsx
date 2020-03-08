@@ -16,7 +16,7 @@ export class Login extends React.Component{
     }
     console.log("user:", googleUser)
   Socket.emit('user', {
-      'user': googleUser
+      'user': [googleUser, user.getAuthResponse().id_token]
     });
   }
 

@@ -26,10 +26,7 @@ function ProfilePicture(props){
 
 function MessageBody(props) {
 	if(props.bot){
-		console.log("your warm")
-		console.log("img:", props.img)
 		if(props.img){
-			console.log("HOTTT")
 			return(
 			<div className="msg_cotainer_send">
 				<img src={props.msg}/>

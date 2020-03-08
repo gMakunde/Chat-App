@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Socket } from './Socket'
-import {User, Message} from './MessageObjects'
+import {Message} from './MessageObjects'
 import { Login } from './Login'
 
 
@@ -10,6 +10,7 @@ export class MessageSent extends React.Component {
         this.state = {
 			user_message: '',
 			user: '',
+			
         };
         
         this.handleChangeMessage = this.handleChangeMessage.bind(this);

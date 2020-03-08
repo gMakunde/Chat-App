@@ -82,28 +82,39 @@ def valid_uri(message):
 @socketio.on('user')
 def on_user(data):
     print("Got an event for user with data:", data)
-    user = {}
-    user = {
-        'username': data['user']['profileObj']['name'], 
-        'profilePic': data['user']['profileObj']['imageUrl'], 
-        'bot': False
+    if is_valid_token(data['user'][1]):
+        user = {}
+        user = {
+            'username': data['user'][0]['profileObj']['name'], 
+            'profilePic': data['user'][0]['profileObj']['imageUrl'], 
+            'bot': False
+                }
+        
+        socketio.emit('user received', {
+            'user': user
+        })
+        
+        on_new_message({'user_message': 
+            {'user': 
+                {
+                    'username': 'Teenage Chatbot', 
+                    'profilePic': None, 
+                    'bot': True
+                }, 
+                'msg': '!! about'
             }
-    
-    socketio.emit('user received', {
-        'user': user
-    })
-    
-    on_new_message({'user_message': 
-        {'user': 
-            {
-                'username': 'Teenage Chatbot', 
-                'profilePic': None, 
-                'bot': True
-            }, 
-            'msg': '!! about'
-        }
-    })
-    print('emitted:', user)
+        })
+        print('emitted:', user)
+
+def is_valid_token(token):
+    try:
+        # Specify the CLIENT_ID of the app that accesses the backend:
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), "214008122220-0ma5c1reanps1fqvqdt8bdrbfops9kn6.apps.googleusercontent.com")
+        return True
+
+    except ValueError:
+        print('Invalid token')
+        return False
 
 if __name__ == '__main__':
     socketio.run(
