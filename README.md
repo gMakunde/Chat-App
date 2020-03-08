@@ -5,25 +5,26 @@ The theme that I chose for this project is Haha Davis sayings.
 the bot now is named "haha chatbot" with haha davis's picture. All his commands contains new dialouge with haha davis quotes.
 
 ## What are at least 4 issues you encountered with your projectsince c? How did you fix them? 
-1. The database would not work with heroku__
-  solution: used the correct env key that corresponds to heroku__
+1. The database would not work with heroku<br />
+  solution: used the correct env key that corresponds to heroku<br />
   
-2. google sign in did not work__
-  solution: looked back at the slides and documentation and noticed slight errors to fix__
+2. google sign in did not work<br />
+  solution: looked back at the slides and documentation and noticed slight errors to fix<br />
   
-3. how to difrreentiaite between a hyperlink and an image adress__
-  solution: if it was a valid link I searched for image file type names in the strings__
+3. how to difrreentiaite between a hyperlink and an image adress<br />
+  solution: if it was a valid link I searched for image file type names in the strings<br />
 
-4. google sign in doesnt change after user logs in__
-  solution: set the state to be a disabled button that says logged in__
-5. I wanted to send a picture from the chatbot anytime someone used the dior command__
+4. google sign in doesnt change after user logs in<br />
+  solution: set the state to be a disabled button that says logged in<br />
+5. I wanted to send a picture from the chatbot anytime someone used the dior command<br />
   solution: I retured a tuple and used recursion to send each message separetly
 
 ## What are known problems, if any, with your project?
-The way i mapped data in one of the files should each have a unique key
-when mutiple users log in it sometimes sends messages witht he wrong user attached
-if there is no jpg png or gif in the link and it is an image it will render as a link
-if a user is not logged in and tries to type the chatbox will disappear
+1.The way i mapped data in one of the files should each have a unique key
+2. when mutiple users log in it sometimes sends messages witht he wrong user attached
+3. if there is no jpg, png, googleusercontent or gif in the link and it is an image it will render as a link
+4. if a user is not logged in and tries to type, the chatbox will disappear
+5. if message is shorter than the name then the username the bubble displays awkwardly
 
 ## What would you do to improve your project in the future?
 use sessions for users and fix the bugs listed above.
