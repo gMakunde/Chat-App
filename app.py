@@ -43,17 +43,13 @@ def on_new_message(data):
     if '!!' == message['msg'][:2]:
         c = ChatBot.ChatBot(message['msg'])
         bot_reply = c.bot_reply()
-        message = {'user': 
-                    {
-                    'username': 'Teenage Chatbot', 
-                    'profilePic': None, 
-                    'bot': True
-                    }, 
-                    'msg': bot_reply
-                }
-                
+        if '!! dior' == message['msg']:
+            on_new_message(bot_reply[1])
+            bot_reply = bot_reply[0]
+        message = c.create_message(bot_reply)
+           
     if valid_uri(message["msg"]):
-        if ".jpg" in message["msg"] or ".png" in message["msg"] or ".gif" in message["msg"] or ".jpeg" in message["msg"]:
+        if ".jpg" in message["msg"] or ".png" in message["msg"] or ".gif" in message["msg"] or ".jpeg" in message["msg"] or "https://lh3.googleusercontent.com" in message["msg"]:
             message["imageLink"] = True
         else:
             message["hyperLink"] = True

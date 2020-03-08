@@ -6,7 +6,7 @@ function ProfilePicture(props){
 	if(props.bot) {
 		return(
 			<div className="img_cont_msg">
-				<img src="https://www.cartoonbucket.com/wp-content/uploads/2017/04/Jenny-Wakeman-Smiling.png" className="rounded-circle user_img_msg"/>
+				<img src="https://i.ibb.co/gZ15Pxh/oie-Hym-DVjtkg-Xoz.png" className="rounded-circle user_img_msg"/>
 			</div>
 			);
 	}
@@ -26,6 +26,17 @@ function ProfilePicture(props){
 
 function MessageBody(props) {
 	if(props.bot){
+		console.log("your warm")
+		console.log("img:", props.img)
+		if(props.img){
+			console.log("HOTTT")
+			return(
+			<div className="msg_cotainer_send">
+				<img src={props.msg}/>
+				<span className="msg_time">{props.user}</span>
+			</div>
+			);
+		}
 		return(
 		<div className="msg_cotainer_send">
 			{props.msg}
@@ -62,7 +73,8 @@ function Reply(props) {
 		<div className="d-flex justify-content-start mb-4">
 			<ProfilePicture bot={props.bot}/>
 			<div style={{paddingRight:'10px'}}></div>
-			<MessageBody msg={props.msg} user={props.user} bot={props.bot}/>
+			<MessageBody msg={props.msg} user={props.user} bot={props.bot}
+			img={props.img}/>
 		</div>
 		);
 	}
