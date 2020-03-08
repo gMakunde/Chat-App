@@ -31,7 +31,7 @@ use sessions for users and fix the bugs listed above.
 
 ### Chatbox Walkthough GIF
 
-<img src="http://g.recordit.co/PQ6HBQTgZt.gif"><br>
+<img src="http://g.recordit.co/5T6d0Otj60.gif"><br>
 
 
 
@@ -68,4 +68,4 @@ make it persist and use sessions for users.
 
 ### Chatbox Walkthough GIF
 
-<img src="http://g.recordit.co/wEphrcRIPK.gif"><br>
+<img src="http://g.recordit.co/PQ6HBQTgZt.gif"><br>
