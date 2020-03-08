@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Socket } from './Socket'
 import {Message} from './MessageObject'
+import { GoogleLogin } from 'react-google-login';
 import { Login } from './Login'
 
 
@@ -10,6 +11,7 @@ export class MessageSent extends React.Component {
         this.state = {
 			user_message: '',
 			user: '',
+			logIn: <Login />
 			
         };
         
@@ -24,7 +26,11 @@ export class MessageSent extends React.Component {
     	Socket.on('user received', (data) =>{
     		console.log('message sent hi there')
     		this.state.user = data['user']
+    		const loggedIn = <GoogleLogin buttonText="Logged In :)" disabled={true} />
+    		this.setState({
+    		    'logIn': loggedIn
     		});
+    	})
     }
     
     handleSubmit(event){
@@ -69,7 +75,7 @@ export class MessageSent extends React.Component {
         let isEnabled = this.canBeClicked();
         return (
         <div>
-            <Login />
+            {this.state.logIn}
             <div style={{paddingBottom:'5px'}}/>
             <div className="input-group">
     			<div className="input-group-append">
