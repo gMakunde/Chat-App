@@ -16,10 +16,14 @@ The title is "chat man chat man yea thats me" and theres a command to get the ro
 
 4. google sign in doesnt change after user logs in__
   solution: __
+5. I wanted to send a picture from the chatbot anytime someone used the dior command__
+  solution: I retured a tuple and used recursion to send each message separetly
 
 ## What are known problems, if any, with your project?
 The way i mapped data in one of the files should each have a unique key
 when mutiple users log in it sometimes sends messages witht he wrong user attached
+if there is no jpg png or gif in the link and it is an image it will render as a link
+if a user is not logged in and tries to type the chatbox will disappear
 
 ## What would you do to improve your project in the future?
 use sessions for users and fix the bugs listed above.
