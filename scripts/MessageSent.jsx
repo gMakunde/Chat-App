@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Socket } from './Socket'
-import {Message} from './MessageObjects'
+import {Message} from './MessageObject'
 import { Login } from './Login'
 
 

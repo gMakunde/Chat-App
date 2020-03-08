@@ -2,7 +2,7 @@ import flask_sqlalchemy, app
 import os
 
 # app.app = app module app variable
-app.app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://g_makunde:San20Faith@localhost/postgres"
 db = flask_sqlalchemy.SQLAlchemy(app.app)
 
 class Message(db.Model):
