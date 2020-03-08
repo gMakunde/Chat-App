@@ -2,7 +2,7 @@
 The theme that I chose for this project is Haha Davis sayings.
 
 ## How did you incorporate your theme within your project? 
-The title is "chat man chat man yea thats me" and theres a command to get the robot to say that as well. Also the robot greets people by saying "big fella!"
+the bot now is named "haha chatbot" with haha davis's picture. All his commands contains new dialouge with haha davis quotes.
 
 ## What are at least 4 issues you encountered with your projectsince c? How did you fix them? 
 1. The database would not work with heroku__
