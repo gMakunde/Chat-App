@@ -42,7 +42,13 @@ class ChatBotResponseTest(unittest.TestCase):
     def test_say_command(self):
         chat = ChatBot("!! say George is sooooooooo COOL!")
         response = chat.bot_reply()
-        self.assertEqual(response, " George is sooooooooo COOL!") 
+        self.assertEqual(response, " George is sooooooooo COOL!")
+        
+    
+    def test_me_command(self):
+        chat = ChatBot("!! me freak man freak man")
+        response = chat.bot_reply()
+        self.assertEqual(response, " freak man freak man yea thatss meee!") 
 
 if __name__ == '__main__':
     unittest.main()
