@@ -1,4 +1,5 @@
-import unittest, app, os, models
+import unittest, app, os
+import models
 
 class SocketIOTestCase(unittest.TestCase):
     def test_server_relays_message(self):
