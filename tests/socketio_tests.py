@@ -1,5 +1,5 @@
 import unittest, app, os
-import models
+from models import Message
 
 class SocketIOTestCase(unittest.TestCase):
     def test_server_relays_message(self):
@@ -13,7 +13,7 @@ class SocketIOTestCase(unittest.TestCase):
         "message_list received"
         )
         data = from_server["args"][0]
-        messages = models.Message.query.all()
+        messages = Message.query.all()
         message_list = []
         for message in messages:
             message_list.append({'user': 
