@@ -22,7 +22,7 @@ jobs:
           paths:
             - "venv"
 
-      #- run:
-          #name: deploy to heroku
-          #command: |
-          #  git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+      - run:
+          name: deploy to heroku
+          command: |
+            git push https://heroku:4fd8fb64-1c80-4fc6-88b7-58c9d9c3a583@git.heroku.com/chat-man-chat-man.git master
