@@ -53,7 +53,20 @@ class ChatBotResponseTest(unittest.TestCase):
     def test_incorrect_command(self):
         chat = ChatBot("!! bloop")
         response = chat.bot_reply()
-        self.assertEqual(response, "Oh, this is outrageous! Your message contained '!!' You're either really excited or.. you want to use a command. To see the commands type in '!! help'") 
+        self.assertEqual(response, "Oh, this is outrageous! Your message contained '!!' You're either really excited or.. you want to use a command. To see the commands type in '!! help'")
+        
+    def test_create_message(self):
+        chat = ChatBot("")
+        response = chat.create_message("hi there")
+        self.assertEqual(response, {'user': 
+                    {
+                    'username': 'Haha chat bot', 
+                    'profilePic': None, 
+                    'bot': True
+                    }, 
+                    'msg': "hi there"
+                })
+        
 
 if __name__ == '__main__':
     unittest.main()
