@@ -26,6 +26,18 @@ class ChatBotResponseTest(unittest.TestCase):
                 'msg': "https://i.ibb.co/Qn2gm1b/oie-812344-BW5-V1ug-F.jpg"
                 }
             }])
+    
+    def test_help_command(self):
+        chat = ChatBot("!! help")
+        response = chat.bot_reply()
+        self.assertEqual(response, """
+    	    (!! about): gives you a description of who I am
+    	    (!! help): gives you the list of all the commands
+    	    (!! say)<something>: I will say anything you tell me to following that command
+    	    (!! dior): I will send a picture of popsmoke and recite the first bar of "Dior" #RIPpopSmoke
+    	    (!! me)<something>: I will say whatever you tell me to followed by "yea thatss meee!"
+    	    (!! weather man weather man): Gives the current weather report in baltimore
+    	    """) 
 
 if __name__ == '__main__':
     unittest.main()
