@@ -48,7 +48,7 @@ class ChatBot:
     	    return "yea thass mee!\n" + w.get_weather()
 
         if '!!' in self.user_message:
-    	    return "Oh, this is outrageous! Your message contained '!!' You're either really excited or.. you want to use a command. To see the commands type in '!! help'";
+    	    return "Oh, this is outrageous! Your message contained '!!' You're either really excited or.. you want to use a command. To see the commands type in '!! help'"
     	    
     def create_message(self, msg):
         message = {'user': 
