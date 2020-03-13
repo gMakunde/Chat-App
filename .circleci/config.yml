@@ -12,6 +12,7 @@ jobs:
       - run:
           name: run tests
           command: |
+            pip3 install -r requirements.txt
             python -m tests.unit_tests
 
       #- run:
