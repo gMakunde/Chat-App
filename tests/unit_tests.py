@@ -49,6 +49,11 @@ class ChatBotResponseTest(unittest.TestCase):
         chat = ChatBot("!! me freak man freak man")
         response = chat.bot_reply()
         self.assertEqual(response, " freak man freak man yea thatss meee!") 
+    
+    def test_incorrect_command(self):
+        chat = ChatBot("!! bloop")
+        response = chat.bot_reply()
+        self.assertEqual(response, "Oh, this is outrageous! Your message contained '!!' You're either really excited or.. you want to use a command. To see the commands type in '!! help'") 
 
 if __name__ == '__main__':
     unittest.main()
