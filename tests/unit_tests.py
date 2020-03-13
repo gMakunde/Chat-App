@@ -39,5 +39,10 @@ class ChatBotResponseTest(unittest.TestCase):
     	    (!! weather man weather man): Gives the current weather report in baltimore
     	    """) 
 
+    def test_say_command(self):
+        chat = ChatBot("!! say George is sooooooooo COOL!")
+        response = chat.bot_reply()
+        self.assertEqual(response, " George is sooooooooo COOL!") 
+
 if __name__ == '__main__':
     unittest.main()
