@@ -13,8 +13,21 @@ class SocketIOTestCase(unittest.TestCase):
         from_server["name"], 
         "message_list received"
         )
+        messages = models.Message.query.all()
+        message_list = []
+        for message in messages:
+            message_list.append({'user': 
+                {
+                'username': message.user_name, 
+                'profilePic': message.user_profile_pic, 
+                'bot': message.bot
+                }, 
+                'msg': message.message,
+                'imageLink': message.imageLink,
+                'hyperLink': message.hyperLink
+            })
         data = from_server["args"][0]
-        self.assertEqual(data["messages"], "")
+        self.assertEqual(data["messages"], message_list)
             
 if __name__ == '__main__':
     unittest.main()
