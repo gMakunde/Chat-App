@@ -1,5 +1,4 @@
-import unittest, app, os
-from models import Message
+import unittest, app, os, flask_socketio
 
 class SocketIOTestCase(unittest.TestCase):
     def test_server_relays_message(self):
@@ -12,21 +11,8 @@ class SocketIOTestCase(unittest.TestCase):
         from_server["name"], 
         "message_list received"
         )
-        data = from_server["args"][0]
-        messages = Message.query.all()
-        message_list = []
-        for message in messages:
-            message_list.append({'user': 
-                {
-                'username': message.user_name, 
-                'profilePic': message.user_profile_pic, 
-                'bot': message.bot
-                }, 
-                'msg': message.message,
-                'imageLink': message.imageLink,
-                'hyperLink': message.hyperLink
-            })
-        self.assertEqual(data["messages"], message_list)
+       
+        self.assertEqual(data["messages"], "")
 
             
 if __name__ == '__main__':
