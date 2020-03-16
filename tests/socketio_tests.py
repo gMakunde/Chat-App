@@ -11,7 +11,7 @@ class SocketIOTestCase(unittest.TestCase):
         from_server["name"], 
         "message_list received"
         )
-       
+        data = from_server["args"][0]
         self.assertEqual(data["messages"], "")
 
             
