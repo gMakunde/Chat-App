@@ -1,5 +1,5 @@
 import unittest
-import app, os, flask_socketio
+import app
 
 class SocketIOTestCase(unittest.TestCase):
     def test_server_relays_message(self):
