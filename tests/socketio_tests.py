@@ -1,5 +1,6 @@
 import unittest
 import app
+import models
 
 class SocketIOTestCase(unittest.TestCase):
     def test_server_relays_message(self):
