@@ -37,7 +37,9 @@ class SocketIOTestCase(unittest.TestCase):
                 'profilePic': None, 
                 'bot': False
             },
-            'msg': 'george is so beautiful'
+            'msg': 'george is so beautiful',
+            'imageLink': False, 
+            'hyperLink': False
         }
         client.emit("new message", {
             "user_message": msg
