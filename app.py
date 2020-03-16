@@ -1,6 +1,5 @@
 import os
 import flask, flask_sqlalchemy, flask_socketio
-import models
 import ChatBot
 from google.oauth2 import id_token
 from google.auth.transport import requests
@@ -8,8 +7,9 @@ from rfc3987 import parse
 import psycopg2
 
 app = flask.Flask(__name__)
-
 socketio = flask_socketio.SocketIO(app)
+
+import models
 
 @app.route('/')
 def hello():
