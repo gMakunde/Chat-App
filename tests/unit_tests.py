@@ -68,7 +68,7 @@ class ChatBotResponseTest(unittest.TestCase):
         city = weather_response["name"]
         
         weather_report = "There is currently " + condition + " in " + city + ". The high for today is " + str(temp_high) + "°F and the low is " + str(temp_low) +"°F. The current tempreture is " + str(temp) + "°F but it feels like " + str(temp_feels_like) + "°F. The humidity is " + str(humidity) + "% and the wind speed is going at " + str(wind_speed) + "m/s."
-        self.assertEqual(w.get_weather(), "yea thass mee!\n" + weather_report)
+        self.assertEqual(w.get_weather(), weather_report)
     
     def test_weather_command(self):
         chat = ChatBot("!! weather man weather man")
