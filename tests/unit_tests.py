@@ -62,7 +62,7 @@ class ChatBotResponseTest(unittest.TestCase):
         temp_feels_like = round((weather_response["main"]["feels_like"] - 273.15) * 9/5 + 32 )
         temp_high = round((weather_response["main"]["temp_max"] - 273.15) * 9/5 + 32 )
         temp_low = round((weather_response["main"]["temp_min"] - 273.15) * 9/5 + 32 )
-        condition = weather_response["weather_response"][0]["description"]
+        condition = weather_response["weather"][0]["description"]
         humidity = weather_response["main"]["humidity"] 
         wind_speed = weather_response["wind"]["speed"] 
         city = weather_response["name"]
