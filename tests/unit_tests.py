@@ -71,9 +71,9 @@ class ChatBotResponseTest(unittest.TestCase):
         self.assertEqual(w.get_weather(), weather_report)
     
     def test_weather_command(self):
-        chat = ChatBot("!! weather man weather man")
         w = weather.Weather()
         weather_report = w.get_weather()
+        chat = ChatBot("!! weather man weather man")
         response = chat.bot_reply()
         self.assertEqual(response, "yea thass mee!\n" + weather_report) 
     
