@@ -2,6 +2,7 @@ import unittest
 from ChatBot import ChatBot
 import os
 import requests
+import weather
 
 class ChatBotResponseTest(unittest.TestCase):
     def test_about_command(self):
@@ -52,21 +53,27 @@ class ChatBotResponseTest(unittest.TestCase):
         response = chat.bot_reply()
         self.assertEqual(response, " freak man freak man yea thatss meee!")
         
-    def test_weather_command(self):
+    def test_weather_api_call(self):
         key = os.getenv('weather_key')
         url = "http://api.openweathermap.org/data/2.5/weather?q=baltimore&appid="
-        chat = ChatBot("!! weather man weather man")
-        weather = requests.get(url + key).json()
-        temp = round((weather["main"]["temp"] - 273.15) * 9/5 + 32 )
-        temp_feels_like = round((weather["main"]["feels_like"] - 273.15) * 9/5 + 32 )
-        temp_high = round((weather["main"]["temp_max"] - 273.15) * 9/5 + 32 )
-        temp_low = round((weather["main"]["temp_min"] - 273.15) * 9/5 + 32 )
-        condition = weather["weather"][0]["description"]
-        humidity = weather["main"]["humidity"] 
-        wind_speed = weather["wind"]["speed"] 
-        city = weather["name"]
+        w = weather.Weather()
+        weather_response = requests.get(url + key).json()
+        temp = round((weather_response["main"]["temp"] - 273.15) * 9/5 + 32 )
+        temp_feels_like = round((weather_response["main"]["feels_like"] - 273.15) * 9/5 + 32 )
+        temp_high = round((weather_response["main"]["temp_max"] - 273.15) * 9/5 + 32 )
+        temp_low = round((weather_response["main"]["temp_min"] - 273.15) * 9/5 + 32 )
+        condition = weather_response["weather_response"][0]["description"]
+        humidity = weather_response["main"]["humidity"] 
+        wind_speed = weather_response["wind"]["speed"] 
+        city = weather_response["name"]
         
         weather_report = "There is currently " + condition + " in " + city + ". The high for today is " + str(temp_high) + "°F and the low is " + str(temp_low) +"°F. The current tempreture is " + str(temp) + "°F but it feels like " + str(temp_feels_like) + "°F. The humidity is " + str(humidity) + "% and the wind speed is going at " + str(wind_speed) + "m/s."
+        self.assertEqual(w.get_weather(), "yea thass mee!\n" + weather_report)
+    
+    def test_weather_command(self):
+        chat = ChatBot("!! weather man weather man")
+        w = weather.Weather()
+        weather_report = w.get_weather()
         response = chat.bot_reply()
         self.assertEqual(response, "yea thass mee!\n" + weather_report) 
     
