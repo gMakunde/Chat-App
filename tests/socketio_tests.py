@@ -70,7 +70,7 @@ class SocketIOTestCase(unittest.TestCase):
             'familyName': 'Martin'
             
         }}
-        dummy_token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1NDFkNmVmMDIyZDc3YTIzMThmN2RkNjU3ZjI3NzkzMjAzYmVkNGEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMjE0MDA4MTIyMjIwLTBtYTVjMXJlYW5wczFmcXZxZHQ4YmRyYmZvcHM5a242LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMjE0MDA4MTIyMjIwLTBtYTVjMXJlYW5wczFmcXZxZHQ4YmRyYmZvcHM5a242LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTE1NTgzMDAzMTQwOTM3OTIwNzkzIiwiZW1haWwiOiJnZW9yZ2VnMTBsaXZlQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiR2tMZzl4YUcyMXdEZXM1Q1lScEg0QSIsIm5hbWUiOiJHZW9yZ2UgTWFydGluIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdobWk3dV83b0J4X0xRSDk5SmhXM2p3d0JfTXp3cE95ak5aTGMweTNBPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ikdlb3JnZSIsImZhbWlseV9uYW1lIjoiTWFydGluIiwibG9jYWxlIjoiZW4iLCJpYXQiOjE1ODQzOTcyMDAsImV4cCI6MTU4NDQwMDgwMCwianRpIjoiN2FlMjlkOWE3MTM4MjYyZmRiYjVjOTU0OWIxN2ZjMTc5MjdlMjhlYiJ9.YYIxMUMQTl2z1hUrK79FSvVChWz3WhEQBZGUEtQWLG-0lK45mzhmp8jnuVJ4LlIr9QyZpmACNIryIWzTuvcO3CStsYyS6Ad6IR0G6C4sgkXekOxXK_vOKv_cbZbanjIqzvNNm4P0gpSoQAvBMd9ID6uoQrvROQD9fn3D1b1PFnG3ybEvmF7zVNPTcBCXE9tMVUjVKt9EkwVvaCKhxelgQr6v_xc-QeUn8zF8BLtwI4jGmxqHDl19EffCHfeL9k0h4EsCn7lT10S4LPnKRfUSUtXiJDvM7CGQStCKKV2FrVZq-0uXqCOjLr7xe5KgKkndhViPlvyBys_hcgEc7x89mg'
+        dummy_token = os.getenv('dummy_token')
         user_auth = [user, dummy_token]
         client.emit("user", {
             "user": user_auth
