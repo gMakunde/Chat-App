@@ -63,6 +63,7 @@ class ChatBotResponseTest(unittest.TestCase):
         weather_response_status = requests.get(url + key).status_code
         w_response_status = requests.get(w.url + w.key).status_code
         self.assertEqual(weather_response_status, w_response_status)
+        self.assertEqual(weather_response_status, 200)
         self.assertEqual(w.url + w.key, url + key)
     
     def test_weather_command(self):
