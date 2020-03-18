@@ -1,0 +1,40 @@
+import app, unittest, flask_testing, requests
+
+class ServerIntegrationTestCase(
+    flask_testing.LiveServerTestCase
+):
+    def create_app(self):
+        return app.app
+
+    def test_server_sends_html(self):
+        response = requests.get(self.get_server_url())
+        html ="""<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chat</title>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+		<div id="content"></div>
+        <script type="text/javascript" src="/static/script.js"></script>
+        <link rel="stylesheet" href="/static/index.css"/>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="214008122220-0ma5c1reanps1fqvqdt8bdrbfops9kn6.apps.googleusercontent.com">
+	</head>
+	
+	<body>
+	</body>
+</html>"""
+        self.assertEqual(html, response.text)
+    
+    def test_server_is_up_and_running(self):
+        response = requests.get(self.get_server_url())
+        self.assertEqual(response.status_code, 200)
+
+if __name__ == '__main__':
+    unittest.main()
