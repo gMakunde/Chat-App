@@ -1,3 +1,16 @@
+## Why did you choose to test the code that you did?
+1. I tested each command in ChatBot.py to verify if the chatbot was returning the correct response for it.<br />
+2. I tested to make sure that I was calling the correct endpoint for the weather api and the api gave us a 200 response<br />
+3. I tested flask to check if the server was running and that the response text was correct<br />
+4. I tested on_connect to verify it returns all the messages from the database when somebody new connects<br />
+5. I tested to see if a welcome message is emitted when a new user is authenticated<br />
+
+## Is there anything else you would like to test if you had the time (or was asked to do so?)
+If I had more time I would do jasmine tests to test the client side code as well
+
+
+
+
 ## What is the theme you’ll be using for project 2? 
 The theme that I chose for this project is Haha Davis sayings.
 
