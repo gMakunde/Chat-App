@@ -62,11 +62,11 @@ class SocketIOTestCase(unittest.TestCase):
     def test_on_new_user(self):
         client = app.socketio.test_client(app.app)
         user = {'profileObj': {
-            'googleId': '115583003140937920793', 
-            'imageUrl': 'https://lh3.googleusercontent.com/a-/AOh14Ghmi7u_7oBx_LQH99JhW3jwwB_MzwpOyjNZLc0y3A=s96-c', 
-            'email': 'georgeg10live@gmail.com', 
-            'name': 'George Martin', 
-            'givenName': 'George', 
+            'googleId': 'bloop', 
+            'imageUrl': 'bloop', 
+            'email': 'bloop', 
+            'name': 'Bloop Martin', 
+            'givenName': 'Bloop', 
             'familyName': 'Martin'
             
         }}
@@ -92,14 +92,14 @@ class SocketIOTestCase(unittest.TestCase):
             emitted_user
         )
       
-    def test_chatbot_welcome_message(self):
+    def test_emit_welcome_message(self):
         client = app.socketio.test_client(app.app)
         user = {'profileObj': {
-            'googleId': '115583003140937920793', 
-            'imageUrl': 'https://lh3.googleusercontent.com/a-/AOh14Ghmi7u_7oBx_LQH99JhW3jwwB_MzwpOyjNZLc0y3A=s96-c', 
-            'email': 'georgeg10live@gmail.com', 
-            'name': 'George Martin', 
-            'givenName': 'George', 
+            'googleId': 'bloop', 
+            'imageUrl': 'bloop', 
+            'email': 'bloop@gmail.com', 
+            'name': 'Bloop Martin', 
+            'givenName': 'Bloop', 
             'familyName': 'Martin'
             
         }}
@@ -127,7 +127,44 @@ class SocketIOTestCase(unittest.TestCase):
         self.assertEqual(
             data["message"],
             message
-        ) 
+        )
+    
+    def test_emit_hyperlink(self):
+        client = app.socketio.test_client(app.app)
+        msg = {
+            'user': {
+                'username': 'fred', 
+                'profilePic': None, 
+                'bot': False
+            },
+            'msg': 'http://chat-man-chat-man.herokuapp.com/'
+        }
+        client.emit("new message", {
+            "user_message": msg
+        })
+        response = client.get_received()
+
+        self.assertEqual(len(response), 2)
+        from_server = response[1]
+        self.assertEqual(
+            from_server["name"],
+            "message received"
+        )
+        msg_hyper ={
+            'user': {
+                'username': 'fred', 
+                'profilePic': None, 
+                'bot': False
+            },
+            'msg': 'http://chat-man-chat-man.herokuapp.com/',
+            'imageLink': False, 
+            'hyperLink': True
+        }
+        data = from_server["args"][0]
+        self.assertEqual(
+            data["message"],
+            msg_hyper
+        )
     
     
     
