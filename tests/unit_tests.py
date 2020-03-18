@@ -3,6 +3,7 @@ from ChatBot import ChatBot
 import os
 import requests
 import weather
+from fuzzywuzzy import fuzz
 
 class ChatBotResponseTest(unittest.TestCase):
     def test_about_command(self):
@@ -69,14 +70,18 @@ class ChatBotResponseTest(unittest.TestCase):
         city = weather_response["name"]
         
         weather_report = "There is currently " + condition + " in " + city + ". The high for today is " + str(temp_high) + "°F and the low is " + str(temp_low) +"°F. The current tempreture is " + str(temp) + "°F but it feels like " + str(temp_feels_like) + "°F. The humidity is " + str(humidity) + "% and the wind speed is going at " + str(wind_speed) + "m/s."
-        self.assertEqual(weath, weather_report)
+        similarity = fuzz.token_sort_ratio(weath, weather_report)
+        print('\nsimilarity:', similarity)
+        self.assertGreaterEqual(similarity, 95)
     
     def test_weather_command(self):
         chat = ChatBot("!! weather man weather man")
         w = weather.Weather()
         weather_report = w.get_weather()
         response = chat.bot_reply()
-        self.assertEqual(response, "yea thass mee!\n" + weather_report) 
+        similarity = fuzz.token_sort_ratio(response, "yea thass mee!\n" + weather_report)
+        print('\nsimilarity:', similarity)
+        self.assertGreaterEqual(similarity, 95)
     
     def test_incorrect_command(self):
         chat = ChatBot("!! bloop")
@@ -94,6 +99,8 @@ class ChatBotResponseTest(unittest.TestCase):
                     }, 
                     'msg': "hi there"
                 })
+    
+    
         
 
 if __name__ == '__main__':
