@@ -166,6 +166,43 @@ class SocketIOTestCase(unittest.TestCase):
             msg_hyper
         )
     
+    def test_emit_image_link(self):
+        client = app.socketio.test_client(app.app)
+        msg = {
+            'user': {
+                'username': 'fred', 
+                'profilePic': None, 
+                'bot': False
+            },
+            'msg': 'https://upload.wikimedia.org/wikipedia/commons/0/00/Ray-Lewis-2008-Steelers-regseason-game.jpg'
+        }
+        client.emit("new message", {
+            "user_message": msg
+        })
+        response = client.get_received()
+
+        self.assertEqual(len(response), 2)
+        from_server = response[1]
+        self.assertEqual(
+            from_server["name"],
+            "message received"
+        )
+        msg_img ={
+            'user': {
+                'username': 'fred', 
+                'profilePic': None, 
+                'bot': False
+            },
+            'msg': 'https://upload.wikimedia.org/wikipedia/commons/0/00/Ray-Lewis-2008-Steelers-regseason-game.jpg',
+            'imageLink': True, 
+            'hyperLink': False
+        }
+        data = from_server["args"][0]
+        self.assertEqual(
+            data["message"],
+            msg_img
+        )
+    
     
     
             
