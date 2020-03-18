@@ -59,20 +59,10 @@ class ChatBotResponseTest(unittest.TestCase):
         url = "http://api.openweathermap.org/data/2.5/weather?q=baltimore&appid="
         w = weather.Weather()
         weath = w.get_weather()
+        print('key:',w.key)
         weather_response = requests.get(url + key).json()
-        temp = round((weather_response["main"]["temp"] - 273.15) * 9/5 + 32 )
-        temp_feels_like = round((weather_response["main"]["feels_like"] - 273.15) * 9/5 + 32 )
-        temp_high = round((weather_response["main"]["temp_max"] - 273.15) * 9/5 + 32 )
-        temp_low = round((weather_response["main"]["temp_min"] - 273.15) * 9/5 + 32 )
-        condition = weather_response["weather"][0]["description"]
-        humidity = weather_response["main"]["humidity"] 
-        wind_speed = weather_response["wind"]["speed"] 
-        city = weather_response["name"]
-        
-        weather_report = "There is currently " + condition + " in " + city + ". The high for today is " + str(temp_high) + "°F and the low is " + str(temp_low) +"°F. The current tempreture is " + str(temp) + "°F but it feels like " + str(temp_feels_like) + "°F. The humidity is " + str(humidity) + "% and the wind speed is going at " + str(wind_speed) + "m/s."
-        similarity = fuzz.token_sort_ratio(weath, weather_report)
-        print('\nsimilarity:', similarity)
-        self.assertGreaterEqual(similarity, 95)
+        w_response = requests.get(w.url + w.key).json()
+        self.assertEqual(weather_response, w_response)
     
     def test_weather_command(self):
         chat = ChatBot("!! weather man weather man")
@@ -81,7 +71,7 @@ class ChatBotResponseTest(unittest.TestCase):
         response = chat.bot_reply()
         similarity = fuzz.token_sort_ratio(response, "yea thass mee!\n" + weather_report)
         print('\nsimilarity:', similarity)
-        self.assertGreaterEqual(similarity, 95)
+        self.assertGreaterEqual(similarity, 75)
     
     def test_incorrect_command(self):
         chat = ChatBot("!! bloop")
@@ -99,6 +89,9 @@ class ChatBotResponseTest(unittest.TestCase):
                     }, 
                     'msg': "hi there"
                 })
+    def test_instantiation(self):
+        chat = ChatBot("!! bloop")
+        self.assertEqual("!! bloop", chat.user_message)
     
     
         
