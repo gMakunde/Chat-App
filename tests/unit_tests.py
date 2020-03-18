@@ -4,6 +4,7 @@ import os
 import requests
 import weather
 from fuzzywuzzy import fuzz
+import json
 
 class ChatBotResponseTest(unittest.TestCase):
     def test_about_command(self):
@@ -59,10 +60,10 @@ class ChatBotResponseTest(unittest.TestCase):
         url = "http://api.openweathermap.org/data/2.5/weather?q=baltimore&appid="
         w = weather.Weather()
         weath = w.get_weather()
-        print('key:',w.key)
-        weather_response = requests.get(url + key).json()
-        w_response = requests.get(w.url + w.key).json()
-        self.assertEqual(weather_response, w_response)
+        weather_response_status = requests.get(url + key).status_code
+        w_response_status = requests.get(w.url + w.key).status_code
+        self.assertEqual(weather_response_status, w_response_status)
+        self.assertEqual(w.url + w.key, url + key)
     
     def test_weather_command(self):
         chat = ChatBot("!! weather man weather man")
