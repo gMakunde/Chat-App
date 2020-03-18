@@ -63,8 +63,8 @@ class SocketIOTestCase(unittest.TestCase):
         client = app.socketio.test_client(app.app)
         user = {'profileObj': {
             'googleId': 'bloop', 
-            'imageUrl': 'bloop', 
-            'email': 'bloop', 
+            'imageUrl': 'bloop.jpg', 
+            'email': 'bloop@gmail.com', 
             'name': 'Bloop Martin', 
             'givenName': 'Bloop', 
             'familyName': 'Martin'
@@ -82,8 +82,8 @@ class SocketIOTestCase(unittest.TestCase):
             'user received'
         )
         emitted_user = {
-            'username': 'George Martin', 
-            'profilePic': 'https://lh3.googleusercontent.com/a-/AOh14Ghmi7u_7oBx_LQH99JhW3jwwB_MzwpOyjNZLc0y3A=s96-c', 
+            'username': 'Bloop Martin', 
+            'profilePic': 'bloop.jpg', 
             'bot': False
         }
         data = from_server["args"][0]
